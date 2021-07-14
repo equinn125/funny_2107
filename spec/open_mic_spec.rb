@@ -1,6 +1,7 @@
 require './lib/open_mic'
 require './lib/user'
 require './lib/joke'
+require 'pry'
 
 RSpec.describe OpenMic do
   it 'exists' do
@@ -40,9 +41,11 @@ RSpec.describe OpenMic do
     joke_2 = Joke.new(13, "How do you keep a lion from charging?", "Take away its credit cards.")
     open_mic.welcome(user_1)
     open_mic.welcome(user_2)
+    user_2.learn(joke_1)
+    user_2.learn(joke_2)
     user_1.learn(joke_1)
-    user_1.learn(joke_2)
 
-    expect(open_mic.repeated_jokes?).to eq(false)
+
+    expect(open_mic.repeated_jokes?).to eq(true)
   end
 end

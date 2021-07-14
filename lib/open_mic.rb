@@ -11,6 +11,8 @@ class OpenMic
   end
 
   def repeated_jokes?
-    
+  @performers.any? do|performer|
+   performer.jokes == performer.jokes
+    end
   end
 end
