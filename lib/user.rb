@@ -1,5 +1,5 @@
 class User
-  attr_reader :name, :jokes
+  attr_reader :name, :jokes, :user
   def initialize(name)
     @name = name
     @jokes = []
@@ -7,5 +7,16 @@ class User
 
   def learn(joke)
     @jokes << joke
+  end
+
+  def tell(user,joke)
+    user.learn(joke)
+
+  end
+
+  def joke_by_id(id)
+    @jokes.find_all do |joke|
+      joke.id == id
+    end
   end
 end
